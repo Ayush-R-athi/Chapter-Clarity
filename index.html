@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f7f5f0">
+  <meta name="description" content="A private, browser-based readability check for your next chapter. Find sentences worth a second look, without uploading your manuscript.">
+  <title>Chapter Clarity — Make every sentence easier to follow</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to the editor</a>
+  <header class="topbar">
+    <a class="brand" href="#top" aria-label="Chapter Clarity home"><span class="brand-mark" aria-hidden="true">c.</span><span>chapter clarity</span></a>
+    <div class="topbar-right"><span class="privacy-pill"><span aria-hidden="true">●</span> Your writing stays yours</span><a class="about-link" href="#how-it-works">How it works <span aria-hidden="true">↗</span></a></div>
+  </header>
+
+  <main id="main">
+    <section class="hero" id="top">
+      <div class="hero-copy"><div class="eyebrow"><span class="eyebrow-line"></span> A little clarity for your next draft</div>
+        <h1>Make every sentence<br>easier to <em>follow.</em></h1>
+        <p>Get a gentle, useful read on your chapter. Find the sentences readers may need to work harder on—then decide what to do about them.</p>
+        <div class="hero-notes"><span><i aria-hidden="true">✓</i> Free, no sign-up</span><span><i aria-hidden="true">✓</i> Private by design</span><span><i aria-hidden="true">✓</i> Results in seconds</span></div>
+      </div>
+      <div class="hero-art" aria-hidden="true"><div class="art-orbit orbit-one"></div><div class="art-orbit orbit-two"></div><div class="art-sun"></div><div class="art-leaf leaf-one"></div><div class="art-leaf leaf-two"></div><div class="art-leaf leaf-three"></div><div class="art-stem"></div><div class="art-note">a clearer<br>first read</div></div>
+    </section>
+
+    <section class="workspace" aria-label="Chapter readability analyzer">
+      <div class="editor-panel">
+        <div class="section-head"><div><span class="step-label">01 <span>— YOUR CHAPTER</span></span><h2>Start with your words.</h2></div><div class="editor-tools"><button class="text-button" id="sample-button" type="button">Try a sample <span aria-hidden="true">↗</span></button><button class="text-button" id="clear-button" type="button">Clear text <span aria-hidden="true">×</span></button></div></div>
+        <label class="sr-only" for="chapter-input">Paste your chapter here</label>
+        <textarea id="chapter-input" maxlength="100000" spellcheck="true" placeholder="Paste a chapter, a scene, or even just a few paragraphs…" aria-describedby="editor-hint word-count"></textarea>
+        <div class="editor-meta"><span id="editor-hint">Your text is analyzed on this device and never uploaded.</span><span id="word-count" aria-live="polite">0 words</span></div>
+        <div class="editor-actions"><p class="error-message" id="input-error" role="alert" hidden></p><button class="analyze-button" id="analyze-button" type="button"><span>Read my chapter</span><span aria-hidden="true">→</span></button></div>
+        <div class="editor-foot"><span class="keyboard-hint"><kbd>⌘</kbd><span>or</span><kbd>Ctrl</kbd><kbd>↵</kbd> to analyze</span><span>Up to 100,000 characters</span></div>
+      </div>
+
+      <aside class="results-panel" id="results" aria-live="polite" aria-label="Analysis results">
+        <div class="results-empty" id="empty-state"><div class="empty-illustration" aria-hidden="true"><span class="empty-spark">✳</span><span class="empty-page"><i></i><i></i><i></i><i></i></span></div><span class="step-label">02 <span>— YOUR READ</span></span><h2>A clearer picture,<br>one chapter at a time.</h2><p>Your readability snapshot and the sentences worth a second look will show up here.</p><div class="empty-rule"></div><span class="quiet-note">No grades. No judgment. Just a helpful place to start.</span></div>
+        <div id="results-content" hidden>
+          <div class="section-head result-heading"><div><span class="step-label">02 <span>— YOUR READ</span></span><h2>Your chapter, at a glance.</h2></div><button id="copy-button" class="icon-button" type="button" aria-label="Copy summary" title="Copy summary">↗</button></div>
+          <div class="score-card"><div class="score-main"><span class="score-caption">READABILITY SNAPSHOT</span><div class="score-number" id="score-number">—</div><div class="score-label" id="score-label">—</div></div><div class="score-ring" id="score-ring" role="img" aria-label="Readability score"><svg viewBox="0 0 100 100"><circle class="ring-track" cx="50" cy="50" r="42"></circle><circle class="ring-value" id="ring-value" cx="50" cy="50" r="42"></circle></svg><span id="ring-number">—</span></div><p class="score-explainer" id="score-explainer">Flesch Reading Ease is an estimate of how easy a passage may be to read. It says nothing about the quality of your writing.</p></div>
+          <div class="stats-row"><div><span class="stat-value" id="stat-words">0</span><span class="stat-name">WORDS</span></div><div><span class="stat-value" id="stat-sentences">0</span><span class="stat-name">SENTENCES</span></div><div><span class="stat-value" id="stat-minutes">0</span><span class="stat-name">MIN READ</span></div></div>
+          <div class="sentence-section"><div class="sentence-title"><div><span class="step-label">03 <span>— A PLACE TO BEGIN</span></span><h3>Worth a second look</h3></div><span class="result-count" id="result-count">0 SENTENCES</span></div><p class="sentence-intro">These sentences scored higher on a few readability signals. They’re suggestions, not rules.</p><ol class="sentence-list" id="sentence-list"></ol><p class="no-sentences" id="no-sentences" hidden>We couldn't find a complete sentence in this text yet. Add a little more and try again.</p><p class="feedback-note" id="feedback-note" aria-live="polite">Was this list useful? Your feedback stays in this session.</p></div>
+          <div class="results-footer"><span><span class="local-dot"></span> Analyzed privately on this device</span><button id="reanalyze-button" type="button">Analyze again ↗</button></div>
+        </div>
+      </aside>
+    </section>
+
+    <section class="how-section" id="how-it-works"><div class="how-intro"><span class="eyebrow"><span class="eyebrow-line"></span> A thoughtful first pass</span><h2>Useful signals.<br><em>Room for your voice.</em></h2></div><div class="how-steps"><article><span class="how-number">01</span><h3>Paste a passage</h3><p>Start with a scene, a chapter, or a few paragraphs. Your words stay in your browser.</p></article><article><span class="how-number">02</span><h3>See the shape</h3><p>Get a reading ease estimate and find sentences with more complexity signals.</p></article><article><span class="how-number">03</span><h3>Keep what works</h3><p>Review the suggestions and make the call. The voice and the final edit are yours.</p></article></div></section>
+
+    <section class="method-note"><span class="method-icon" aria-hidden="true">✳</span><div><h3>A helpful estimate, not a hard rule.</h3><p>We use the Flesch Reading Ease formula and a transparent set of sentence signals. Syllables are estimated, and fiction, dialogue, names, and fragments can confuse the math. This is a starting point for revision—not a verdict on your prose.</p></div><a href="#method" id="method-link">A little more on the method <span aria-hidden="true">↗</span></a></section>
+    <details class="method-details" id="method"><summary>How the score and sentence suggestions work</summary><div><p><strong>Reading ease:</strong> 206.835 − 1.015 × (words ÷ sentences) − 84.6 × (syllables ÷ words). Higher scores generally suggest easier reading. Scores are clipped to the familiar 0–100 range.</p><p><strong>Sentence suggestions:</strong> sentences are ranked using length, estimated syllables per word, selected punctuation, and subordinate-clause signals. We show up to five, with a short explanation of the signals behind each one. These weights are practical heuristics, not a validated measure of comprehension.</p><p><strong>Privacy:</strong> analysis runs in this browser. Chapter text is not sent to a server, stored, or used for analytics.</p></div></details>
+  </main>
+  <footer class="footer"><a class="brand" href="#top"><span class="brand-mark" aria-hidden="true">c.</span><span>chapter clarity</span></a><span>Made for the love of a good sentence.</span><a href="mailto:hello@chapterclarity.app?subject=Chapter%20Clarity%20feedback">Share feedback <span aria-hidden="true">↗</span></a></footer>
+</body>
+</html>
